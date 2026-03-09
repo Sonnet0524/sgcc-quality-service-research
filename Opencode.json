@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "research-agent": {
+      "description": "Research Agent - 国网优质服务研究Agent",
+      "mode": "primary",
+      "prompt": "{file:./AGENTS.md}"
+    }
+  }
+}
