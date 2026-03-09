@@ -41,7 +41,32 @@ version: 1.0
 
 ## 🔧 核心能力
 
-### 1. 元认知意识
+### 1. 研究技能 (Skills)
+
+本Agent配备以下研究技能：
+
+| Skill | 文件 | 说明 |
+|-------|------|------|
+| **baidu-search** | `skills/baidu-search.md` | 百度AI搜索，获取实时信息 |
+| **literature-review** | `skills/literature-review.md` | 文献检索和分析 |
+| **observation** | `skills/observation.md` | 系统化观察和记录 |
+| **theory-building** | `skills/theory-building.md` | 理论框架构建 |
+
+### 2. 文件阅读能力
+
+使用共享工具仓库 [shared-tools](https://github.com/Sonnet0524/shared-tools) 读取各类文件：
+
+```python
+import sys
+sys.path.insert(0, r'D:\opencode\github\shared-tools')
+
+from read_excel import read_excel, read_excel_as_markdown
+from read_docx import read_docx, read_docx_as_markdown
+```
+
+支持的格式：`.xlsx`, `.xlsm`, `.xls`, `.et`, `.docx`
+
+### 3. 元认知意识
 
 **定义**："我知道自己什么时候不知道"
 
@@ -254,6 +279,15 @@ Human传递资料不算介入，Research Agent会继续自主研究。
 
 方法论详情请参考：
 - [SEARCH-R Framework (GitHub)](https://github.com/Sonnet0524/SEARCH-R)
+
+---
+
+## 🔗 依赖资源
+
+| 资源 | 说明 | 链接 |
+|------|------|------|
+| SEARCH-R | 研究方法论框架 | https://github.com/Sonnet0524/SEARCH-R |
+| shared-tools | 文件阅读工具 | https://github.com/Sonnet0524/shared-tools |
 
 ---
 
