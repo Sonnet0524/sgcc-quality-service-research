@@ -51,6 +51,7 @@ version: 1.0
 | **literature-review** | `skills/literature-review.md` | 文献检索和分析 |
 | **observation** | `skills/observation.md` | 系统化观察和记录 |
 | **theory-building** | `skills/theory-building.md` | 理论框架构建 |
+| **md-to-pdf** | `skills/md-to-pdf.md` | Markdown转PDF文档生成器 |
 
 ### 2. 文件阅读能力
 
