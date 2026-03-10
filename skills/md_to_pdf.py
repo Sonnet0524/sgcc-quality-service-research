@@ -28,7 +28,7 @@ except ImportError:
 DEFAULT_STYLE = """
 @page {
     size: A4;
-    margin: 2cm 2cm 2.5cm 2cm;
+    margin: 1.8cm 1.8cm 2.2cm 1.8cm;
     @bottom-center {
         content: "第 " counter(page) " 页 / 共 " counter(pages) " 页";
         font-size: 10pt;
@@ -39,7 +39,7 @@ DEFAULT_STYLE = """
 body {
     font-family: "Microsoft YaHei", "SimSun", "Arial", sans-serif;
     font-size: 11pt;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #333;
     text-align: justify;
 }
@@ -49,39 +49,39 @@ h1 {
     color: #1a5490;
     text-align: center;
     border-bottom: 3px solid #1a5490;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 h2 {
     font-size: 16pt;
     color: #1a5490;
     border-left: 5px solid #1a5490;
-    padding-left: 15px;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    padding-left: 12px;
+    margin-top: 20px;
+    margin-bottom: 12px;
 }
 
 h3 {
     font-size: 13pt;
     color: #2e6da4;
-    margin-top: 20px;
-    margin-bottom: 12px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 h4 {
     font-size: 12pt;
     color: #3d85c6;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin-top: 12px;
+    margin-bottom: 8px;
 }
 
 blockquote {
     background-color: #f0f7ff;
     border-left: 5px solid #1a5490;
-    padding: 15px 20px;
-    margin: 15px 0;
+    padding: 12px 15px;
+    margin: 10px 0;
     font-style: italic;
     color: #555;
 }
@@ -89,20 +89,20 @@ blockquote {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 th {
     background-color: #1a5490;
     color: white;
-    padding: 10px;
+    padding: 8px;
     text-align: left;
     font-weight: bold;
 }
 
 td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 6px;
 }
 
 tr:nth-child(even) {
@@ -110,12 +110,12 @@ tr:nth-child(even) {
 }
 
 ul, ol {
-    margin: 10px 0;
-    padding-left: 25px;
+    margin: 8px 0;
+    padding-left: 22px;
 }
 
 li {
-    margin: 5px 0;
+    margin: 3px 0;
 }
 
 strong {
@@ -126,18 +126,18 @@ strong {
 hr {
     border: none;
     border-top: 2px solid #1a5490;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 p {
-    margin: 8px 0;
+    margin: 5px 0;
     orphans: 3;
     widows: 3;
 }
 
 code {
     background-color: #f4f4f4;
-    padding: 2px 6px;
+    padding: 2px 5px;
     border-radius: 3px;
     font-family: "Courier New", monospace;
     font-size: 10pt;
@@ -155,7 +155,7 @@ h2, h3, h4 {
 BUSINESS_STYLE = """
 @page {
     size: A4;
-    margin: 2.5cm;
+    margin: 2cm;
     @bottom-center {
         content: counter(page);
         font-size: 10pt;
@@ -166,7 +166,7 @@ BUSINESS_STYLE = """
 body {
     font-family: "Microsoft YaHei", "Arial", sans-serif;
     font-size: 11pt;
-    line-height: 1.8;
+    line-height: 1.6;
     color: #333;
 }
 
@@ -175,44 +175,58 @@ h1 {
     color: #1976D2;
     text-align: center;
     border-bottom: 2px solid #1976D2;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
 }
 
 h2 {
     font-size: 15pt;
     color: #1976D2;
     border-left: 4px solid #1976D2;
-    padding-left: 12px;
+    padding-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 th {
     background-color: #1976D2;
     color: white;
-    padding: 10px;
+    padding: 8px;
 }
 
 td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 6px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+ul, ol {
+    margin: 6px 0;
+}
+
+li {
+    margin: 2px 0;
 }
 """
 
 ACADEMIC_STYLE = """
 @page {
     size: A4;
-    margin: 2.5cm;
+    margin: 2cm;
 }
 
 body {
     font-family: "SimSun", "Times New Roman", serif;
     font-size: 12pt;
-    line-height: 1.5;
+    line-height: 1.4;
     color: #000;
 }
 
@@ -220,22 +234,45 @@ h1 {
     font-size: 18pt;
     text-align: center;
     font-weight: bold;
+    margin-bottom: 12px;
 }
 
 h2 {
     font-size: 14pt;
     font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 8px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 th, td {
     border: 1px solid #000;
-    padding: 8px;
+    padding: 6px;
+}
+
+p {
+    margin: 5px 0;
+    text-indent: 2em;
+}
+
+ul, ol {
+    margin: 6px 0;
+}
+
+li {
+    margin: 2px 0;
 }
 """
 

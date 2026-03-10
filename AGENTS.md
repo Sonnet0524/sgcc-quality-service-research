@@ -51,6 +51,7 @@ version: 1.0
 | **literature-review** | `skills/literature-review.md` | 文献检索和分析 |
 | **observation** | `skills/observation.md` | 系统化观察和记录 |
 | **theory-building** | `skills/theory-building.md` | 理论框架构建 |
+| **writing-style** | `skills/writing-style.md` | 研究报告写作风格指南 |
 | **md-to-pdf** | `skills/md-to-pdf.md` | Markdown转PDF文档生成器 |
 
 ### 2. 文件阅读能力
@@ -123,6 +124,18 @@ Human只在关键决策点介入，信息传递不算介入。
 ### 4. 持续迭代
 
 每次会话后反思，定期自我反思。
+
+### 5. 学术化写作
+
+**核心要求**：段落优先，列表辅助
+
+研究报告应采用学术化、连贯性的写作风格：
+- **优先使用段落叙述**：章节层面必须使用连贯段落
+- **适度使用列表**：仅在细节层面作为辅助手段
+- **避免碎片化**：列表占比不超过30%，避免连续3段以上使用列表
+- **逻辑连贯性**：段落有主题句，段落间有过渡
+
+详见：[写作风格指南](./skills/writing-style.md)
 
 ---
 
