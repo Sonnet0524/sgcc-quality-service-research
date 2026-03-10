@@ -14,15 +14,16 @@
     }
   },
   "mcp": {
-    "aisearch-mcp-server": {
+    "baidu-search-api": {
       "type": "remote",
-      "url": "https://qianfan.baidubce.com/v2/ai_search/mcp",
+      "url": "https://qianfan.baidubce.com/v2/ai_search/web_search",
       "headers": {
-        "Authorization": "Bearer ${BAIDU_AISEARCH_TOKEN}"
+        "Authorization": "Bearer ${BAIDU_AISEARCH_TOKEN}",
+        "Content-Type": "application/json"
       },
       "enabled": true,
       "timeout": 15000,
-      "tool": "chatCompletions"
+      "method": "POST"
     }
   }
 }

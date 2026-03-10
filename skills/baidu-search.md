@@ -2,95 +2,245 @@
 skill: baidu-search
 category: tool
 depends_on: []
-mcp_server: aisearch-mcp-server
-tool: chatCompletions
+api_endpoint: https://qianfan.baidubce.com/v2/ai_search/web_search
+api_method: POST
 ---
 
-# 百度AI搜索能力
+# 百度搜索能力
 
-> 通过MCP协议调用百度AI搜索，获取实时信息
+> 通过百度千帆平台调用百度搜索API，获取实时全网信息
 
 ---
 
 ## 📋 能力定义
 
-使用百度AI搜索MCP服务器进行实时信息搜索，支持：
-- **基础搜索**：直接返回原始搜索结果
-- **AI搜索**：使用大模型对搜索结果进行智能总结
+使用百度搜索（BaiduSearch）API进行实时信息检索，支持：
+- **网页搜索**：全网实时信息检索
+- **多模态搜索**：网页、视频、图片、阿拉丁内容
+- **高级过滤**：站点过滤、时效过滤、屏蔽站点
+- **高权威性**：基于百度搜索能力，海量内容站点
 
 ## 🎯 使用场景
 
 - 需要获取最新的实时信息
 - 需要搜索新闻、技术文档、教程等
-- 需要对搜索结果进行智能总结和分析
-- 需要多模态搜索（网页、图片、视频）
+- 需要在特定站点内搜索
+- 需要按时间范围筛选结果
+- 需要多模态搜索（网页、视频、图片）
 
-## 🔧 MCP配置
+## 🔧 API配置
 
-### 服务器信息
+### 接口信息
 
 | 项目 | 内容 |
 |------|------|
-| **服务器名称** | `aisearch-mcp-server` |
-| **工具名称** | `chatCompletions` |
-| **URL** | `https://qianfan.baidubce.com/v2/ai_search/mcp` |
-| **协议** | JSON-RPC 2.0 |
+| **API端点** | `https://qianfan.baidubce.com/v2/ai_search/web_search` |
+| **请求方法** | POST |
+| **Content-Type** | application/json |
+| **认证方式** | Bearer Token |
 
-### 配置文件位置
+### 认证配置
 
-已在 `opencode.json` 中配置MCP服务器，所有Agent均可使用。
+需要在环境变量或配置文件中设置`BAIDU_AISEARCH_TOKEN`：
 
-## 🛠️ 工具参数
+```bash
+# 方式1：环境变量
+export BAIDU_AISEARCH_TOKEN="your_api_key"
 
-### chatCompletions 工具
+# 方式2：.env.local文件
+BAIDU_AISEARCH_TOKEN=your_api_key
+```
+
+## 🛠️ 请求参数
+
+### 基础参数
 
 | 参数 | 类型 | 必须 | 说明 |
 |------|------|------|------|
-| **query** | string | ✅ 是 | 搜索查询关键词或短语 |
-| **model** | string | ❌ 否 | 大模型名称（如 `ERNIE-3.5-8K`），不指定则返回原始结果 |
-| **instruction** | string | ❌ 否 | 控制搜索结果输出风格和格式 |
-| **temperature** | float | ❌ 否 | 模型输出随机性，范围 (0, 1]，默认 1e-10 |
-| **top_p** | float | ❌ 否 | 核采样参数，默认 1e-10 |
-| **resource_type_filter** | list | ❌ 否 | 资源类型和返回数量 |
+| **messages** | array | ✅ 是 | 搜索输入，包含role和content |
+| **search_source** | string | ❌ 否 | 固定值：`baidu_search_v2` |
+| **edition** | string | ❌ 否 | 搜索版本：`standard`（完整版）或`lite`（简化版） |
+
+### Messages对象
+
+```json
+{
+  "messages": [
+    {
+      "content": "搜索关键词",
+      "role": "user"
+    }
+  ]
+}
+```
+
+### 资源类型过滤（resource_type_filter）
+
+| 类型 | top_k范围 | 说明 |
+|------|-----------|------|
+| **web** | 1-50 | 网页搜索 |
+| **video** | 1-10 | 视频搜索 |
+| **image** | 1-30 | 图片搜索 |
+| **aladdin** | 1-5 | 阿拉丁内容 |
+
+```json
+{
+  "resource_type_filter": [
+    {"type": "web", "top_k": 20},
+    {"type": "video", "top_k": 5}
+  ]
+}
+```
+
+### 站点过滤（search_filter）
+
+```json
+{
+  "search_filter": {
+    "match": {
+      "site": ["www.weather.com.cn", "news.baidu.com"]
+    }
+  }
+}
+```
+
+### 时效过滤（search_recency_filter）
+
+| 值 | 时间范围 |
+|------|---------|
+| **week** | 最近7天 |
+| **month** | 最近30天 |
+| **semiyear** | 最近180天 |
+| **year** | 最近365天 |
 
 ## 📝 使用示例
 
 ### 基础搜索示例
 
-```json
-{
-  "query": "北京有哪些旅游景区"
+```python
+import requests
+
+url = "https://qianfan.baidubce.com/v2/ai_search/web_search"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "messages": [
+        {
+            "content": "国家电网 优质服务举措",
+            "role": "user"
+        }
+    ],
+    "search_source": "baidu_search_v2",
+    "resource_type_filter": [
+        {"type": "web", "top_k": 10}
+    ]
+}
+
+response = requests.post(url, headers=headers, json=payload)
+result = response.json()
+```
+
+### 站点过滤示例
+
+```python
+payload = {
+    "messages": [
+        {
+            "content": "河北各个城市最近的天气",
+            "role": "user"
+        }
+    ],
+    "search_source": "baidu_search_v2",
+    "resource_type_filter": [
+        {"type": "web", "top_k": 10}
+    ],
+    "search_filter": {
+        "match": {
+            "site": ["www.weather.com.cn"]
+        }
+    }
 }
 ```
 
-返回原始搜索结果，不经过LLM处理。
+### 时效过滤示例
 
-### AI智能总结示例
-
-```json
-{
-  "query": "人工智能最新发展趋势",
-  "model": "ERNIE-3.5-8K",
-  "temperature": 0.3,
-  "instruction": "总结为3个要点"
+```python
+payload = {
+    "messages": [
+        {
+            "content": "人工智能最新发展趋势",
+            "role": "user"
+        }
+    ],
+    "search_source": "baidu_search_v2",
+    "resource_type_filter": [
+        {"type": "web", "top_k": 10}
+    ],
+    "search_recency_filter": "month"  # 最近30天
 }
 ```
-
-使用大模型对搜索结果进行智能总结。
 
 ### 多模态搜索示例
 
-```json
-{
-  "query": "Python机器学习教程",
-  "resource_type_filter": [
-    {"type": "web", "top_k": 5},
-    {"type": "video", "top_k": 3}
-  ]
+```python
+payload = {
+    "messages": [
+        {
+            "content": "Python机器学习教程",
+            "role": "user"
+        }
+    ],
+    "search_source": "baidu_search_v2",
+    "resource_type_filter": [
+        {"type": "web", "top_k": 10},
+        {"type": "video", "top_k": 5},
+        {"type": "image", "top_k": 3}
+    ]
 }
 ```
 
-同时返回网页和视频类型的搜索结果。
+## 📤 响应参数
+
+### 成功响应
+
+```json
+{
+    "request_id": "ca749cb1-26db-4ff6-9735-f7b472d59003",
+    "references": [
+        {
+            "id": 1,
+            "title": "网页标题",
+            "url": "https://example.com",
+            "content": "网页内容片段...",
+            "date": "2026-03-10 08:30:00",
+            "icon": null,
+            "web_anchor": "网站锚文本",
+            "website": "站点名称",
+            "type": "web",
+            "rerank_score": 0.95,
+            "authority_score": 0.88,
+            "image": null,
+            "video": null
+        }
+    ]
+}
+```
+
+### Reference对象说明
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| **id** | int | 引用编号 |
+| **title** | string | 网页标题 |
+| **url** | string | 网页地址 |
+| **content** | string | 网页内容片段（2000字以内） |
+| **date** | string | 网页日期 |
+| **type** | string | 资源类型：web/video/image/aladdin |
+| **rerank_score** | float | 相关性评分（0-1） |
+| **authority_score** | float | 权威性评分（0-1） |
 
 ## 💡 最佳实践
 
@@ -98,250 +248,88 @@ tool: chatCompletions
 
 | 场景 | 推荐配置 |
 |------|---------|
-| 快速获取原始信息 | 仅使用 `query` 参数 |
-| 需要内容总结 | 添加 `model: "ERNIE-3.5-8K"` |
-| 事实性查询 | `model` + `temperature: 0.1-0.3` |
-| 创意性内容 | `model` + `temperature: 0.5-0.7` |
-| 多类型结果 | 使用 `resource_type_filter` |
+| **新闻资讯** | resource_type=[web], recency=week/month |
+| **技术文档** | resource_type=[web], edition=standard |
+| **视频教程** | resource_type=[web, video] |
+| **特定站点** | 添加search_filter.match.site |
+| **快速搜索** | edition=lite, top_k=5-10 |
 
-### 2. Query构建建议
+### 2. 性能优化
 
-- ✅ 使用简洁明确的关键词组合
-- ✅ 复杂查询拆分为多个简单查询
-- ❌ 避免过于宽泛或模糊的词语
+- **使用lite版本**：时延表现更好，适合快速搜索
+- **控制top_k**：不要设置过大的返回数量
+- **合理使用过滤**：站点过滤和时效过滤可以提高结果相关性
 
-### 3. 资源类型配置
+### 3. 错误处理
 
-```json
-// 网页搜索（默认）
-{"type": "web", "top_k": 10}
+| 错误码 | 说明 | 解决方法 |
+|--------|------|---------|
+| 400 | 客户端请求参数错误 | 检查请求参数格式 |
+| 500 | 服务端执行错误 | 稍后重试 |
+| 501 | 调用模型服务超时 | 增加timeout或减少top_k |
+| 502 | 模型流式输出超时 | 稍后重试 |
 
-// 视频搜索
-{"type": "video", "top_k": 5}
+## 🔒 安全注意
 
-// 图片搜索
-{"type": "image", "top_k": 5}
+### API Key安全
 
-// 多类型组合
-[
-  {"type": "web", "top_k": 5},
-  {"type": "video", "top_k": 3},
-  {"type": "image", "top_k": 2}
-]
-```
-
-## 🔄 工作流程
-
-### ⚠️ Step 0: 记录搜索日志（必须执行）
-
-**每次调用前必须记录搜索日志**，用于跟踪接口质量和用量。
-
-#### 记录内容
-
-```json
-{
-  "timestamp": "2026-03-09T10:30:00.000Z",
-  "call_id": "call-20260309-001",
-  "input": {
-    "query": "搜索关键词",
-    "parameters": {
-      "model": "ERNIE-3.5-8K",
-      "temperature": 0.3,
-      "resource_type_filter": [{"type": "web", "top_k": 5}]
-    }
-  },
-  "output": {
-    "status": "success",
-    "result_count": 5,
-    "response_time_ms": 1234,
-    "request_id": "xxx-xxx-xxx"
-  },
-  "usage": {
-    "daily_total": 15,
-    "daily_limit": 1000,
-    "remaining": 985
-  }
-}
-```
-
-#### 记录位置
-
-- **日志文件**: `search-logs/YYYY-MM-DD.jsonl`
-- **用量统计**: `search-logs/usage-stats.json`
-
-#### 维护流程
-
-1. **调用前**：检查今日剩余额度，记录调用意图
-2. **调用后**：记录实际结果、响应时间、状态
-3. **异常时**：记录错误信息、错误码、重试建议
-
----
-
-### Step 1: 确定搜索需求
-
-- 需要什么类型的信息？
-- 是否需要AI总结？
-- 需要多少条结果？
-
-### Step 2: 构建查询参数
-
-根据需求选择合适的参数组合。
-
-### Step 3: 调用MCP工具
-
-通过MCP协议调用 `AIsearch` 工具。
-
-### Step 4: 处理搜索结果
-
-- 分析返回的搜索结果
-- 提取关键信息
-- 整理和归纳
-
-### Step 5: 更新搜索日志（必须执行）
-
-记录实际返回结果，更新用量统计。
-
----
-
-## 📊 搜索记录与用量跟踪
-
-### 记录文件结构
-
-```
-search-logs/
-├── 2026-03-09.jsonl          # 每日搜索记录（JSONL格式）
-├── 2026-03-10.jsonl
-├── ...
-└── usage-stats.json          # 用量统计汇总
-```
-
-### 日志记录格式
-
-每条记录包含以下字段：
-
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| **timestamp** | string | ISO 8601时间戳 |
-| **call_id** | string | 唯一调用ID（格式：call-YYYYMMDD-NNN） |
-| **input.query** | string | 搜索查询 |
-| **input.parameters** | object | 调用参数 |
-| **output.status** | string | 状态：success/failed |
-| **output.result_count** | int | 返回结果数量 |
-| **output.response_time_ms** | int | 响应时间（毫秒） |
-| **output.error** | string | 错误信息（失败时） |
-| **usage.daily_total** | int | 今日累计调用次数 |
-| **usage.remaining** | int | 今日剩余额度 |
-
-### 用量统计文件
-
-`usage-stats.json` 维护累计统计数据：
-
-```json
-{
-  "daily_usage": {
-    "2026-03-09": {
-      "total_calls": 15,
-      "successful_calls": 14,
-      "failed_calls": 1,
-      "avg_response_time_ms": 1234,
-      "daily_limit": 1000,
-      "remaining": 985
-    }
-  },
-  "monthly_summary": {
-    "2026-03": {
-      "total_calls": 450,
-      "estimated_cost_yuan": 0
-    }
-  }
-}
-```
-
-### 质量跟踪指标
-
-#### 响应时间监控
-
-- **正常范围**: < 2000ms
-- **警告阈值**: 2000-5000ms
-- **异常阈值**: > 5000ms
-
-#### 成功率监控
-
-- **正常**: > 95%
-- **警告**: 90-95%
-- **异常**: < 90%
-
-#### 用量预警
-
-- **正常**: remaining > 200
-- **警告**: remaining 50-200
-- **紧急**: remaining < 50
-
-## 📊 计费说明
-
-| 项目 | 说明 |
-|------|------|
-| **赠送额度** | 1000次/天 |
-| **速率限制** | 3 QPS |
-| **计费方式** | 按量后付费 |
-| **价格** | 0.036元/次（网页/图像/视频） |
-
-### 用量监控
-
-- **实时查看**: 查看 `search-logs/usage-stats.json`
-- **日志位置**: `search-logs/YYYY-MM-DD.jsonl`
-- **建议**: 每日检查剩余额度，避免超出免费额度
-
-### 成本估算
-
-- 免费额度内：0元
-- 超出后：每次调用约 0.036元
-- 月度估算：`总调用次数 × 0.036元`
-
-## ⚠️ 注意事项
-
-### 1. 搜索日志记录（必须遵守）
-
-**⚠️ 重要：每次调用前必须记录搜索日志**
-
-**日志位置**: `search-logs/YYYY-MM-DD.jsonl`
-
-**记录时机**:
-- ✅ **调用前**：检查剩余额度，记录调用意图
-- ✅ **调用后**：记录实际结果、响应时间、状态
-- ❌ **异常时**：记录错误信息、错误码、重试建议
-
-**忽略记录会导致**:
-- 无法跟踪用量（可能超出免费额度）
-- 无法监控质量（响应慢、失败率高等问题被忽视）
-- 无法审计（调用历史不可追溯）
-
-### 2. API Key安全
-- ✅ 已配置在全局配置中，无需在代码中暴露
 - ⚠️ 请勿将API Key提交到公开仓库
+- ✅ 使用环境变量或配置文件管理
+- ✅ 定期更换API Key
+- ✅ 监控API使用量和费用
 
-### 3. 调用限制
-- **免费额度**: 1000次/天
-- **速率限制**: 3 QPS
-- **超出后**: 开始计费（0.036元/次）
+### 配置文件示例
 
-### 4. 参数依赖
-- `temperature`、`top_p` 仅在指定 `model` 时生效
-- `resource_type_filter` 各类型独立计算 `top_k`
+创建`.env.local`文件：
+```bash
+BAIDU_AISEARCH_TOKEN=your_api_key_here
+```
 
-### 5. 超时处理
-- **默认超时**: 15秒（配置中已设置）
-- **建议**: 对于复杂查询，可适当增加超时时间
+确保`.gitignore`包含：
+```
+.env
+.env.local
+```
 
-## 🔗 相关资源
+## 📊 Python实现
 
-- [百度千帆控制台](https://console.bce.baidu.com/qianfan/)
-- [MCP配置文件](../opencode.json)
-- [百度AI搜索文档](https://cloud.baidu.com/doc/qianfan/s/2mh4su4uy)
+完整的Python实现请参考：`skills/baidu_web_search_api.py`
+
+### 快速使用
+
+```python
+from skills.baidu_web_search_api import BaiduWebSearch
+
+# 创建客户端
+client = BaiduWebSearch()
+
+# 执行搜索
+result = client.search(
+    query="国家电网 优质服务举措",
+    top_k=10,
+    resource_types=["web"],
+    recency_filter="month"
+)
+
+# 处理结果
+if result["success"]:
+    for ref in result["references"]:
+        print(f"标题: {ref['title']}")
+        print(f"URL: {ref['url']}")
+        print(f"日期: {ref['date']}")
+        print(f"内容: {ref['content'][:200]}...")
+        print("---")
+```
+
+## 📚 API文档参考
+
+- [百度搜索API官方文档](https://cloud.baidu.com/doc/AppBuilder/s/klv6eyrj9)
+- [百度千帆平台](https://cloud.baidu.com/product/wenxinworkshop)
+- [API Key获取](https://console.bce.baidu.com/qianfan/ais/console/onlineTest)
 
 ---
 
-**维护者**: SEARCH-R Framework  
-**更新时间**: 2026-03-09  
-**MCP服务器**: aisearch-mcp-server  
-**版本**: v1.1（新增搜索记录功能）
+**技能类型**: 信息检索工具  
+**维护者**: Research Agent  
+**更新时间**: 2026-03-10  
+**API版本**: baidu_search_v2
