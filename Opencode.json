@@ -21,7 +21,8 @@
         "Authorization": "Bearer ${BAIDU_AISEARCH_TOKEN}"
       },
       "enabled": true,
-      "timeout": 15000
+      "timeout": 15000,
+      "tool": "chatCompletions"
     }
   }
 }

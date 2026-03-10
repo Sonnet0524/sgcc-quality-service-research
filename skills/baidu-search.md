@@ -3,7 +3,7 @@ skill: baidu-search
 category: tool
 depends_on: []
 mcp_server: aisearch-mcp-server
-tool: AIsearch
+tool: chatCompletions
 ---
 
 # 百度AI搜索能力
@@ -32,9 +32,9 @@ tool: AIsearch
 | 项目 | 内容 |
 |------|------|
 | **服务器名称** | `aisearch-mcp-server` |
-| **工具名称** | `AIsearch` |
+| **工具名称** | `chatCompletions` |
 | **URL** | `https://qianfan.baidubce.com/v2/ai_search/mcp` |
-| **协议** | Streamable HTTP |
+| **协议** | JSON-RPC 2.0 |
 
 ### 配置文件位置
 
@@ -42,7 +42,7 @@ tool: AIsearch
 
 ## 🛠️ 工具参数
 
-### AIsearch 工具
+### chatCompletions 工具
 
 | 参数 | 类型 | 必须 | 说明 |
 |------|------|------|------|
