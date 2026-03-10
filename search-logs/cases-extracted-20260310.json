@@ -1,0 +1,184 @@
+{
+  "search_info": {
+    "timestamp": "2026-03-10T12:38:39",
+    "query": "国家电网 电费抄核 自动化抄表 优秀案例",
+    "api": "百度AI搜索",
+    "status": "success",
+    "result_count": 9
+  },
+  "cases": [
+    {
+      "case_id": 1,
+      "title": "抄表工"老马"眼中的电力发展",
+      "unit_name": "邹平供电公司",
+      "service_object": "台子镇农村用电客户",
+      "service_mode": "远程集抄系统",
+      "innovation_points": [
+        "从手动抄表到抄表机再到远程集抄的技术迭代",
+        "全面完成智能电表和电能信息采集器安装",
+        "实现远程监控电表工作状态，及时发现故障"
+      ],
+      "service_effects": [
+        "抄表工作效率大幅提升：从半个月缩短到几分钟",
+        "工作强度大大降低",
+        "能及时发现电表故障，减少用户损失",
+        "实现对客户用电情况的数据分析"
+      ],
+      "source_url": "http://www.chinanationalbrand.org.cn/article/zjshow/link/link_id/22"
+    },
+    {
+      "case_id": 2,
+      "title": "小小机器人，助力抄表业务大进步",
+      "unit_name": "国网阿克苏供电公司营销服务中心",
+      "service_object": "需要补录信息的用电客户",
+      "service_mode": "RPA流程机器人",
+      "innovation_points": [
+        "引入RPA流程机器人技术",
+        "模仿员工日常电脑流程实现自动化",
+        "从自动输入、查找、核对到生成表格一气呵成"
+      ],
+      "service_effects": [
+        "1400余条用户明细获取：从3小时缩短到15分钟",
+        "大幅减轻基层人员工作压力",
+        "提升核对信息准确性",
+        "数据准确率明显提升，规避数据风险"
+      ],
+      "source_url": "http://tech.chinadaily.com.cn/a/202311/20/WS655ac98ea310d5acd876f7ed.html"
+    },
+    {
+      "case_id": 3,
+      "title": "用心用情提供用电服务",
+      "unit_name": "诸暨市供电公司枫桥供电所",
+      "service_object": "枫桥镇村民和企业客户",
+      "service_mode": "网格化服务团队+涉电问题属地化解",
+      "innovation_points": [
+        "创新"走、看、核、抄、查"抄表操作法",
+        "研制"多功能抄表棒"等36项创新成果",
+        "提出"涉电问题属地化解"工作模式",
+        "利用电力大数据摸排，协调专线共享"
+      ],
+      "service_effects": [
+        "抄表操作法大幅提升工作效率并在当地推广",
+        "为企业节省建设费用超30万元",
+        "专线共享方案缩短工期6个月",
+        "培养433名电力服务人员"
+      ],
+      "source_url": "http://www.sc.sgcc.com.cn/html/main/col9/2024-09/20/20240920120133884638259_1.html"
+    },
+    {
+      "case_id": 4,
+      "title": "城里妈妈——付珍",
+      "unit_name": "国网高青县供电公司抄表班",
+      "service_object": "社区居民和企业客户",
+      "service_mode": "彩虹共产党员服务队上门服务",
+      "innovation_points": [
+        "定期组织用电知识宣传",
+        "主动分析客户用电情况，优化电价执行方式",
+        "上门排查用电异常，解决客户疑虑"
+      ],
+      "service_effects": [
+        "帮助企业更改电价执行方式，当月节省电费3万余元",
+        "企业年节约电费30-40万元",
+        "消除客户误解，提升满意度",
+        "让客户真正用上放心电、明白电"
+      ],
+      "source_url": "https://mp.weixin.qq.com/s?__biz=MzIzODg3OTAzNQ==&mid=2247491362"
+    },
+    {
+      "case_id": 5,
+      "title": "李俊：刻苦钻研的多面手",
+      "unit_name": "国网运城供电公司营销稽查中心核算班",
+      "service_object": "全市247万户电力用户",
+      "service_mode": "电费核算智能化+数字管理平台",
+      "innovation_points": [
+        "编制《电费核算宝典》，形成"李俊算法"",
+        "研发营销智能稽核系统",
+        "创新研发"电价数字汇"管理平台"
+      ],
+      "service_effects": [
+        "纠正各类算费问题5600余个",
+        "累计挽回经济损失300万余元",
+        "为客户节省电费近百万元",
+        "电费发行及时率持续保持100%",
+        "单户电费核算时长缩短三分之二",
+        "用户投诉率明显下降"
+      ],
+      "source_url": "https://www.yuncheng.gov.cn/doc/2023/03/02/322080.shtml"
+    },
+    {
+      "case_id": 6,
+      "title": "四表合一：智能用电惠万家",
+      "unit_name": "国家电网公司",
+      "service_object": "全国居民用户",
+      "service_mode": "用电信息采集系统+物联网技术",
+      "innovation_points": [
+        "推动供电、供水、供热、燃气"四表合一"采集",
+        "拓展用电信息采集系统应用领域",
+        "打造新型用能服务模式"
+      ],
+      "service_effects": [
+        "减少抄表工作量和硬件重复建设",
+        "用户每月一条信息即可了解所有用量",
+        "支撑智慧城市建设",
+        "山东试点每天处理数据超1000万条"
+      ],
+      "source_url": "https://news.bjx.com.cn/html/20160217/708359.shtml"
+    },
+    {
+      "case_id": 7,
+      "title": "划时代之桨 扬奋进之帆——推动电费核算业务智能化变革",
+      "unit_name": "国网宁夏电力有限公司营销服务中心",
+      "service_object": "宁夏2564个行政村用电客户",
+      "service_mode": "省级集约+智能核算",
+      "innovation_points": [
+        "电费核算全量用户省级集约",
+        "从手工抄表到系统智能核算的变革",
+        "营销业务应用系统+用电信息采集系统融合"
+      ],
+      "service_effects": [
+        "从手工计算到系统自动计算，降低错算漏算风险",
+        "提高工作效率，降低劳动强度",
+        "实现宁夏电费核算业务智能化"
+      ],
+      "source_url": "http://caijing.chinadaily.com.cn/a/202208/22/WS63034d2aa3101c3ee7ae4fd4.html"
+    },
+    {
+      "case_id": 8,
+      "title": "新型电力抄表员"上岗"生产营销一线",
+      "unit_name": "国网新疆巴州供电公司",
+      "service_object": "巴州地区用电客户",
+      "service_mode": "RPA机器人流程自动化",
+      "innovation_points": [
+        "利用RPA技术开发"新型电力抄表员"",
+        "自动抓取分析抄表失败数据",
+        "以短信形式自动通知供电所处理"
+      ],
+      "service_effects": [
+        "省去人工核查过程",
+        "实现抄表数据集中管理、集中运维",
+        "精准消缺，提高工作质效",
+        "减轻基层工作人员负担"
+      ],
+      "source_url": "http://www.nw.sgcc.com.cn/info/1014/21683.htm"
+    },
+    {
+      "case_id": 9,
+      "title": "数智创新成果入选典型案例",
+      "unit_name": "南方电网贵州兴义供电局",
+      "service_object": "兴义地区用电客户",
+      "service_mode": "云景平台+智慧营销质量管控工具+RPA机器人",
+      "innovation_points": [
+        "基于云景平台的智慧营销质量管控工具",
+        "集成电费电子化结算率、自动对账率等关键指标监控",
+        "实现全链条自动化管理"
+      ],
+      "service_effects": [
+        "大幅度提升电费数据准确性和可靠性",
+        "提高客户服务风险分析效率",
+        "入选"2025年电力企业信创国产化典型案例"",
+        "为供电企业提升运营管理带来质的飞跃"
+      ],
+      "source_url": "http://gz.people.com.cn/n2/2025/0407/c372080-41188511.html"
+    }
+  ]
+}
