@@ -22,3 +22,18 @@ timestamp:2026-03-10T09:00:00.000Z call_id:call-20260310-001 input:query:国网 
 {"timestamp":"2026-03-10T15:30:00.000Z","call_id":"call-20260310-013","input":{"query":"国家电网公司 用电信息采集系统 运维服务 典型案例","parameters":{}},"tool_used":"baidu-aisearch-jsonrpc","output":{"status":"success","result_count":9,"response_time_ms":3000},"usage":{"daily_total":13,"daily_limit":1000,"remaining":987}}
 {"timestamp": "2026-03-10T12:40:37.657491Z", "call_id": "call-20260310-004", "input": {"query": "国家电网 用电检查 安全检查 优秀案例", "parameters": {"model": null, "temperature": null, "resource_type_filter": [{"type": "web", "top_k": 10}]}}, "output": {"status": "success", "result_count": 10, "response_time_ms": null, "request_id": "call-20260310-004"}, "usage": {"daily_total": 1, "daily_limit": 1000, "remaining": 999}}
 {"timestamp": "2026-03-10T12:38:39.000Z", "call_id": "call-20260310-014", "input": {"query": "国家电网 电费抄核 自动化抄表 优秀案例", "parameters": {"resource_type_filter": [{"type": "web", "top_k": 10}]}}, "output": {"status": "success", "result_count": 9, "response_time_ms": 1500, "request_id": "call-20260310-123839"}, "usage": {"daily_total": 14, "daily_limit": 1000, "remaining": 986}}
+{"timestamp": "2026-03-10T22:36:07.390745", "query": "县级供电公司 客户服务 创新 案例", "response_time_ms": 1168, "request_id": "1ea575f5-8db2-42d3-9a93-fbc33cf64fde", "result_count": 8}
+{"timestamp": "2026-03-10T22:36:09.604142", "query": "县级供电公司 优质服务 典型案例", "response_time_ms": 1206, "request_id": "e2aa0b2e-2763-4ca6-aa35-553007c3119c", "result_count": 15}
+{"timestamp": "2026-03-10T22:36:11.808460", "query": "县供电公司 服务提升 先进经验", "response_time_ms": 1197, "request_id": "87d39a59-00f0-43af-94cf-1d14a79a4b81", "result_count": 9}
+{"timestamp": "2026-03-10T22:36:14.032349", "query": "县级供电企业 服务创新 做法", "response_time_ms": 1219, "request_id": "461a2f38-74dc-458c-91f6-c4d4deea000a", "result_count": 12}
+{"timestamp": "2026-03-10T22:36:16.164307", "query": "县供电公司 营商环境 优化 案例", "response_time_ms": 1125, "request_id": "575fb34b-dc6f-4b98-9f06-677b3c3df49d", "result_count": 12}
+{"timestamp": "2026-03-10T22:36:18.543822", "query": "供电所 优质服务 典型案例", "response_time_ms": 1369, "request_id": "bb1937b4-5375-4529-9385-38bafa9c2476", "result_count": 15}
+{"timestamp": "2026-03-10T22:36:20.667147", "query": "供电所 服务创新 先进经验", "response_time_ms": 1116, "request_id": "f11ed98f-d069-41b9-a777-1d89f032d8e4", "result_count": 11}
+{"timestamp": "2026-03-10T22:36:22.922722", "query": "供电所 客户服务 优秀案例", "response_time_ms": 1249, "request_id": "1d0856d1-776f-4667-8cf9-dd0d49ce900d", "result_count": 15}
+{"timestamp": "2026-03-10T22:36:24.996649", "query": "基层供电所 服务提升 做法", "response_time_ms": 1067, "request_id": "24f93bc3-eb04-4998-82f5-6d6f17573435", "result_count": 13}
+{"timestamp": "2026-03-10T22:36:27.056322", "query": "供电所 零投诉 服务经验", "response_time_ms": 1053, "request_id": "f0d95c53-b5dd-4e4e-9331-7b4fda059a82", "result_count": 8}
+{"timestamp": "2026-03-10T22:36:29.053091", "query": "台区经理 服务明星 典型案例", "response_time_ms": 985, "request_id": "bfcb35e9-6410-42a1-84e2-b1648f1e62fa", "result_count": 5}
+{"timestamp": "2026-03-10T22:36:31.035544", "query": "台区经理 客户服务 优秀案例", "response_time_ms": 976, "request_id": "64eeae64-4f62-40c3-90a5-23e47bd322e1", "result_count": 3}
+{"timestamp": "2026-03-10T22:36:33.117179", "query": "网格经理 服务创新 先进经验", "response_time_ms": 1075, "request_id": "4665f043-e08b-4b7b-a345-d5baafe033f3", "result_count": 8}
+{"timestamp": "2026-03-10T22:36:35.433344", "query": "台区经理 优质服务 做法", "response_time_ms": 1310, "request_id": "bea56d9e-4260-49ec-9c02-aea7555eaed8", "result_count": 7}
+{"timestamp": "2026-03-10T22:36:37.538709", "query": "客户经理 服务明星 典型", "response_time_ms": 1099, "request_id": "35d8e6ec-c0d4-4819-8d12-65e3fd8e91e3", "result_count": 7}
