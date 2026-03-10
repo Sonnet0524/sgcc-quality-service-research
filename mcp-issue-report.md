@@ -74,7 +74,7 @@ Error: Skill "baidu-search" not found. Available skills: 0
 
 **检查内容**：
 - ✅ Token文件存在：`D:/opencode/github/.env.local`
-- ✅ Token格式正确：`[REDACTED]`
+- ✅ Token格式正确：`bce-v3/ALTAK-...`（已配置）
 
 **结果**：Token配置正常
 

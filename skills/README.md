@@ -44,13 +44,13 @@ pip install requests
 
 方法1：环境变量
 ```bash
-export BAIDU_AISEARCH_TOKEN="bce-v3/ALTAK-..."
+export BAIDU_AISEARCH_TOKEN="your_token_here"
 ```
 
 方法2：配置文件
 创建 `D:/opencode/github/.env.local` 文件：
 ```
-BAIDU_AISEARCH_TOKEN=bce-v3/ALTAK-...
+BAIDU_AISEARCH_TOKEN=your_token_here
 ```
 
 **使用方法**：

@@ -52,8 +52,17 @@ class BaiduAISearch:
         token = os.getenv("BAIDU_AISEARCH_TOKEN")
         if token:
             return token
-            
-        # 尝试从配置文件加载（项目根目录的上级目录）
+        
+        # 尝试从配置文件加载（按优先级查找）
+        # 优先级1: 项目根目录
+        env_file = Path(__file__).parent.parent / ".env.local"
+        if env_file.exists():
+            with open(env_file, 'r', encoding='utf-8') as f:
+                for line in f:
+                    if line.startswith("BAIDU_AISEARCH_TOKEN="):
+                        return line.split('=', 1)[1].strip()
+        
+        # 优先级2: 上级目录（兼容旧配置）
         env_file = Path(__file__).parent.parent.parent / ".env.local"
         if env_file.exists():
             with open(env_file, 'r', encoding='utf-8') as f:
@@ -61,7 +70,12 @@ class BaiduAISearch:
                     if line.startswith("BAIDU_AISEARCH_TOKEN="):
                         return line.split('=', 1)[1].strip()
         
-        raise ValueError("未找到BAIDU_AISEARCH_TOKEN，请设置环境变量或在.env.local文件中配置")
+        raise ValueError(
+            "未找到BAIDU_AISEARCH_TOKEN，请通过以下方式配置：\n"
+            "1. 设置环境变量：export BAIDU_AISEARCH_TOKEN='your_token'\n"
+            "2. 创建项目根目录的.env.local文件\n"
+            "3. 创建上级目录的.env.local文件"
+        )
     
     def _get_call_id(self) -> str:
         """生成唯一调用ID"""

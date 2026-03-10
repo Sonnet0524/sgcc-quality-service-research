@@ -1,13 +1,13 @@
 {
   "daily_usage": {
     "2026-03-10": {
-      "total_calls": 10,
+      "total_calls": 11,
       "successful_calls": 3,
       "partial_calls": 2,
-      "failed_calls": 5,
-      "avg_response_time_ms": 1242,
+      "failed_calls": 6,
+      "avg_response_time_ms": 1169,
       "daily_limit": 1000,
-      "remaining": 990,
+      "remaining": 989,
       "tools_used": {
         "webfetch": 6,
         "aisearch": 0,
@@ -17,7 +17,7 @@
   },
   "monthly_summary": {
     "2026-03": {
-      "total_calls": 10,
+      "total_calls": 11,
       "estimated_cost_yuan": 0
     }
   },
