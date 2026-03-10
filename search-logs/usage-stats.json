@@ -1,0 +1,41 @@
+{
+  "daily_usage": {
+    "2026-03-10": {
+      "total_calls": 10,
+      "successful_calls": 3,
+      "partial_calls": 2,
+      "failed_calls": 5,
+      "avg_response_time_ms": 1242,
+      "daily_limit": 1000,
+      "remaining": 990,
+      "tools_used": {
+        "webfetch": 6,
+        "aisearch": 0,
+        "knowledge_base": 1
+      }
+    }
+  },
+  "monthly_summary": {
+    "2026-03": {
+      "total_calls": 10,
+      "estimated_cost_yuan": 0
+    }
+  },
+  "tool_availability": {
+    "AIsearch": {
+      "status": "unavailable",
+      "last_check": "2026-03-10T14:30:00.000Z",
+      "reason": "MCP工具不在当前可用工具列表中"
+    },
+    "webfetch": {
+      "status": "available",
+      "used_as_fallback": true,
+      "limitations": [
+        "HTTPS证书验证问题",
+        "页面编码问题",
+        "部分网站访问受限",
+        "搜索功能受限"
+      ]
+    }
+  }
+}

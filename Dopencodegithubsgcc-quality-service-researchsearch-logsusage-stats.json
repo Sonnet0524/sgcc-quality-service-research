@@ -1,0 +1,18 @@
+{
+  "daily_usage": {
+    "2026-03-10": {
+      "total_calls": 0,
+      "successful_calls": 0,
+      "failed_calls": 0,
+      "avg_response_time_ms": 0,
+      "daily_limit": 1000,
+      "remaining": 1000
+    }
+  },
+  "monthly_summary": {
+    "2026-03": {
+      "total_calls": 0,
+      "estimated_cost_yuan": 0
+    }
+  }
+}
