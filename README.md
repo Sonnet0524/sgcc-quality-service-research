@@ -168,3 +168,11 @@ sgcc-quality-service-research/
 **项目状态**: 🟢 Active  
 **研究方法**: SEARCH-R  
 **最后更新**: 2026-03-09
+
+---
+
+## 📝 许可
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
+本项目采用 GNU Affero General Public License v3.0 (AGPL v3.0) 协议开源。
